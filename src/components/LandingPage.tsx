@@ -218,7 +218,7 @@ const LandingPage: React.FC = () => {
         <img 
           src="/Satark AI.png" 
           alt="SATARK.AI Logo" 
-          className="h-13 w-auto" // slightly reduced height for better alignment
+          className="h-12 w-auto" // slightly reduced height for better alignment
         />
         <div className="-mt-1"> {/* Slightly shifts text up to align better with image */}
           <h1 className="text-xl font-bold text-gray-900 dark:text-white">SATARK.AI</h1>
