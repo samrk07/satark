@@ -49,8 +49,8 @@ const LandingPage: React.FC = () => {
 
   const content = {
     en: {
-      title: "SATARK.AI – India's First AI-Powered Survey Intelligence System",
-      subtitle: "Making Indian government surveys faster, fairer, and future-ready.",
+      title: "Turning People’s Voice into Trusted Data",
+      subtitle: "Reimagining India’s Surveys - Secure, Scalable, and Ready for Tomorrow.",
       loginAdmin: "🔐 Login as Admin",
       loginAgent: "🧑‍🌾 Login as Field Agent",
       viewDemo: "📘 View Demo / Presentation",
