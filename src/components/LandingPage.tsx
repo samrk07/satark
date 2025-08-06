@@ -258,6 +258,16 @@ const LandingPage: React.FC = () => {
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
               {content[language].title}
             </h1>
+            
+            {/* Banner Image */}
+            <div className="mb-8">
+              <img 
+                src="/image.png" 
+                alt="Government Survey Banner" 
+                className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl border-4 border-white/20 hover:shadow-3xl transition-all duration-500"
+              />
+            </div>
+            
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
               {content[language].subtitle}
             </p>
