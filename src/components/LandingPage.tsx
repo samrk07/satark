@@ -214,11 +214,11 @@ const LandingPage: React.FC = () => {
      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
   <div className="container mx-auto px-6 py-4">
     <div className="flex items-center justify-between">
-      <div className="flex items-center gap-2"> {/* Reduced gap from 4 to 2 */}
+      <div className="flex items-center gap-1"> {/* Reduced gap from 4 to 2 */}
         <img 
           src="/Satark AI.png" 
           alt="SATARK.AI Logo" 
-          className="h-10 w-auto" // slightly reduced height for better alignment
+          className="h-20 w-auto" // slightly reduced height for better alignment
         />
         <div className="-mt-1"> {/* Slightly shifts text up to align better with image */}
           <h1 className="text-xl font-bold text-gray-900 dark:text-white">SATARK.AI</h1>
