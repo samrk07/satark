@@ -211,17 +211,21 @@ const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Header */}
-      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <img src="/Satark AI.png" alt="SATARK.AI Logo" className="h-12 w-auto" />
-              <div>
-                <h1 className="text-xl font-bold text-gray-900 dark:text-white">SATARK.AI</h1>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Survey Intelligence System</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
+     <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+  <div className="container mx-auto px-6 py-4">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-2"> {/* Reduced gap from 4 to 2 */}
+        <img 
+          src="/Satark AI.png" 
+          alt="SATARK.AI Logo" 
+          className="h-10 w-auto" // slightly reduced height for better alignment
+        />
+        <div className="-mt-1"> {/* Slightly shifts text up to align better with image */}
+          <h1 className="text-xl font-bold text-gray-900 dark:text-white">SATARK.AI</h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400">Survey Intelligence System</p>
+        </div>
+      </div>
+      <div className="flex items-center gap-4">
               <button
                 onClick={toggleLanguage}
                 className="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200 rounded-lg hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-colors font-medium"
@@ -259,16 +263,15 @@ const LandingPage: React.FC = () => {
               {content[language].title}
             </h1>
             
-            {/* Banner Image */}
-            <div className="mb-8">
-              <img 
-                src="/image.png" 
-                alt="Government Survey Banner" 
-                className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl border-4 border-white/20 hover:shadow-3xl transition-all duration-500"
-              />
-            </div>
-            
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+           {/* Banner Image */}
+<div className="mb-8 px-4 sm:px-6 lg:px-8">
+  <img 
+    src="/image.png" 
+    alt="Government Survey Banner" 
+    className="w-full max-w-6xl mx-auto rounded-2xl shadow-xl border border-white/20 transition-all duration-500 object-cover"
+  />
+</div>
+ <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
               {content[language].subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -483,7 +486,7 @@ const LandingPage: React.FC = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <img src="/Satark AI.png" alt="SATARK.AI" className="h-10 w-auto" />
+                <img src="Satark AI.png" alt="SATARK.AI" className="h-10 w-auto" />
                 <div>
                   <h3 className="text-xl font-bold">SATARK.AI</h3>
                   <p className="text-gray-400 text-sm">Survey Intelligence</p>
@@ -517,7 +520,7 @@ const LandingPage: React.FC = () => {
                 <p>Ministry of Statistics & Programme Implementation</p>
                 <p>Government of India</p>
                 <p>Email: support@satark.ai</p>
-                <p>Phone: +91-11-2338-2000</p>
+                <p>Phone: +91-9136347884</p>
               </div>
             </div>
           </div>
