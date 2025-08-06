@@ -128,7 +128,6 @@ function App() {
                   </ProtectedRoute>
                 } 
               />
-              <Route path="/demo" element={<Navigate to="/dashboard/admin" replace />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </ThemeProvider>
