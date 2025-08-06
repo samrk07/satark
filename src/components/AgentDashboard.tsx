@@ -114,7 +114,7 @@ const AgentDashboard: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center space-x-4">
-              <img src="/Satark AI (1).png" alt="SATARK.AI Logo" className="h-12 w-auto" />
+              <img src="/Satark AI.png" alt="SATARK.AI Logo" className="h-12 w-auto" />
               <div>
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                   {language === 'en' ? 'Field Agent Portal' : 'फील्ड एजेंट पोर्टल'}
