@@ -215,7 +215,7 @@ const LandingPage: React.FC = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <img src="/Satark AI (1).png" alt="SATARK.AI Logo" className="h-12 w-auto" />
+              <img src="/Satark AI.png" alt="SATARK.AI Logo" className="h-12 w-auto" />
               <div>
                 <h1 className="text-xl font-bold text-gray-900 dark:text-white">SATARK.AI</h1>
                 <p className="text-sm text-gray-600 dark:text-gray-400">Survey Intelligence System</p>
@@ -244,7 +244,7 @@ const LandingPage: React.FC = () => {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-orange-600/10">
           <img 
-            src="/image.png" 
+            src="/image1.png" 
             alt="Government Survey Banner" 
             className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-overlay"
           />
