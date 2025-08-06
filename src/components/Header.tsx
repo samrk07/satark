@@ -12,7 +12,7 @@ const Header: React.FC = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-3">
-            <img src="/Satark AI.png" alt="SATARK.AI Logo" className="h-10 w-auto" />
+            <img src="/Satark%20AI.png" alt="SATARK.AI Logo" className="h-10 w-auto" />
             <div>
               <h1 className="text-xl font-bold text-gray-900 dark:text-white">SATARK.AI</h1>
               <p className="text-xs text-gray-500 dark:text-gray-400">Ministry of Statistics & Programme Implementation</p>
