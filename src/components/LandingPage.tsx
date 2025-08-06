@@ -29,7 +29,8 @@ import {
   Lightbulb,
   Heart,
   ThumbsUp,
-  Quote
+  Quote,
+  Trophy
 } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
