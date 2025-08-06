@@ -473,7 +473,7 @@ const LandingPage: React.FC = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <img src="/Satark AI (1).png" alt="SATARK.AI" className="h-10 w-auto" />
+                <img src="/Satark AI.png" alt="SATARK.AI" className="h-10 w-auto" />
                 <div>
                   <h3 className="text-xl font-bold">SATARK.AI</h3>
                   <p className="text-gray-400 text-sm">Survey Intelligence</p>
