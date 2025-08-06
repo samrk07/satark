@@ -30,7 +30,8 @@ import {
   Heart,
   ThumbsUp,
   Quote,
-  Trophy
+  Trophy,
+  AlertTriangle
 } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
