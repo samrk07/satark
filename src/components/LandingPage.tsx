@@ -228,6 +228,12 @@ const LandingPage: React.FC = () => {
               >
                 {language === 'en' ? 'हिंदी' : 'English'}
               </button>
+              <button
+                onClick={() => window.location.href = '/login'}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              >
+                Login
+              </button>
               <div className="h-8 w-1 bg-gradient-to-b from-orange-500 via-white to-green-500 rounded-full"></div>
             </div>
           </div>
@@ -236,11 +242,13 @@ const LandingPage: React.FC = () => {
 
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-orange-600/10"></div>
-        <div 
-          className="absolute inset-0 opacity-5 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/image.png)' }}
-        ></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-orange-600/10">
+          <img 
+            src="/image.png" 
+            alt="Government Survey Banner" 
+            className="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-overlay"
+          />
+        </div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full text-sm font-medium mb-6">
@@ -255,14 +263,14 @@ const LandingPage: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button
-                onClick={() => handleLogin('admin')}
+                onClick={() => window.location.href = '/login?role=admin'}
                 className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-semibold flex items-center gap-2"
               >
                 <Shield className="w-5 h-5" />
                 {content[language].loginAdmin}
               </button>
               <button
-                onClick={() => handleLogin('agent')}
+                onClick={() => window.location.href = '/login?role=agent'}
                 className="bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-4 rounded-xl hover:from-green-700 hover:to-green-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-semibold flex items-center gap-2"
               >
                 <Users className="w-5 h-5" />
@@ -446,7 +454,7 @@ const LandingPage: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => handleLogin('admin')}
+              onClick={() => window.location.href = '/login?role=admin'}
               className="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold flex items-center gap-2 justify-center"
             >
               Get Started Today

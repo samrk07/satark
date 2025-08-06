@@ -56,9 +56,7 @@ const LoginPage: React.FC = () => {
           </button>
           
           <div className="flex items-center justify-center space-x-3 mb-6">
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-orange-600 rounded-xl flex items-center justify-center">
-              <Shield className="h-6 w-6 text-white" />
-            </div>
+            <img src="/Satark AI (1).png" alt="SATARK.AI Logo" className="h-12 w-auto" />
             <div>
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">SATARK.AI</h1>
               <p className="text-sm text-gray-600 dark:text-gray-400">Government Login Portal</p>
