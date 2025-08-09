@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Shield, User, Mail, Lock, ArrowLeft } from 'lucide-react';
+import { Shield, User, Mail, Lock, ArrowLeft, Globe } from 'lucide-react';
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -43,43 +43,43 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-corporate-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-8">
           <button
             onClick={() => navigate('/')}
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 mb-6"
+            className="inline-flex items-center text-accent hover:text-navy-700 mb-6 font-medium"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
           </button>
           
           <div className="flex items-center justify-center mb-6">
-  <img src="/Satark AI.png" alt="SATARK.AI Logo" className="h-12 w-auto" />
-  <div className="ml-1">
-    <h1 className="text-2xl font-bold text-gray-900 dark:text-white">SATARK.AI</h1>
-    <p className="text-sm text-gray-600 dark:text-gray-400">Government Login Portal</p>
-  </div>
-</div>
-
+            <img src="/Satark AI.png" alt="SATARK.AI Logo" className="h-10 w-auto" />
+            <div className="ml-3">
+              <h1 className="text-2xl font-semibold text-corporate-900">SATARK.AI</h1>
+              <p className="text-sm text-corporate-600">Government Login Portal</p>
+            </div>
+          </div>
           
           <button
             onClick={toggleLanguage}
-            className="px-4 py-2 bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 rounded-lg hover:bg-orange-200 dark:hover:bg-orange-800 transition-colors font-medium text-sm"
+            className="flex items-center space-x-2 px-4 py-2 bg-white border border-corporate-200 rounded-lg hover:bg-corporate-50 transition-colors font-medium text-sm mx-auto"
           >
-            {language === 'en' ? 'हिंदी' : 'English'}
+            <Globe className="h-4 w-4 text-corporate-600" />
+            <span className="text-corporate-700">{language === 'en' ? 'हिंदी' : 'English'}</span>
           </button>
         </div>
 
         {/* Login Form */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 p-8">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
+        <div className="bg-white rounded-2xl shadow-card border border-corporate-200 p-8">
+          <h2 className="text-2xl font-semibold text-corporate-900 text-center mb-8">
             {t('login.title')}
           </h2>
           
           {error && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg mb-6">
+            <div className="bg-error/10 border border-error/20 text-error px-4 py-3 rounded-lg mb-6">
               {error}
             </div>
           )}
@@ -87,14 +87,14 @@ const LoginPage: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Role Selection */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-corporate-700 mb-2">
                 {t('login.role')}
               </label>
               <select
                 name="role"
                 value={formData.role}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                className="w-full px-4 py-3 border border-corporate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent bg-white text-corporate-900"
               >
                 <option value="admin">{t('login.admin')}</option>
                 <option value="agent">{t('login.agent')}</option>
@@ -103,17 +103,17 @@ const LoginPage: React.FC = () => {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-corporate-700 mb-2">
                 {t('login.email')}
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-corporate-400" />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full pl-10 pr-4 py-3 border border-corporate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent bg-white text-corporate-900"
                   placeholder="your.email@gov.in"
                   required
                 />
@@ -122,17 +122,17 @@ const LoginPage: React.FC = () => {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-corporate-700 mb-2">
                 {t('login.password')}
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-corporate-400" />
                 <input
                   type="password"
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full pl-10 pr-4 py-3 border border-corporate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent bg-white text-corporate-900"
                   placeholder="Enter your password"
                   required
                 />
@@ -143,7 +143,7 @@ const LoginPage: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 px-4 rounded-xl hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-accent text-white py-3 px-4 rounded-xl hover:bg-navy-700 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center">
@@ -157,9 +157,9 @@ const LoginPage: React.FC = () => {
           </form>
 
           {/* Demo Credentials */}
-          <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
-            <h3 className="text-sm font-semibold text-blue-800 dark:text-blue-300 mb-2">Demo Credentials:</h3>
-            <div className="text-xs text-blue-700 dark:text-blue-400 space-y-1">
+          <div className="mt-8 p-4 bg-navy-50 rounded-lg border border-navy-200">
+            <h3 className="text-sm font-medium text-navy-800 mb-2">Demo Credentials:</h3>
+            <div className="text-xs text-navy-700 space-y-1">
               <p><strong>Admin:</strong> admin@mospi.gov.in / password123</p>
               <p><strong>Agent:</strong> agent@field.gov.in / password123</p>
             </div>
@@ -169,7 +169,7 @@ const LoginPage: React.FC = () => {
           <div className="mt-6 text-center">
             <button
               onClick={() => navigate('/register')}
-              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium"
+              className="text-accent hover:text-navy-700 text-sm font-medium"
             >
               {t('login.register')}
             </button>
