@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import MapComponent from './MapComponent';
+import { sampleMapData } from '../data/mapData';
 import { 
   Users, 
   FileText, 
@@ -210,10 +212,10 @@ const Dashboard: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* District Progress */}
-          <div className="lg:col-span-2 bg-white rounded-2xl shadow-card border border-corporate-200">
+          <div className="bg-white rounded-2xl shadow-card border border-corporate-200">
             <div className="p-6 border-b border-corporate-200">
               <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold text-corporate-900">District-wise Survey Progress</h3>
+                <h3 className="text-xl font-semibold text-corporate-900">Survey Progress</h3>
                 <div className="flex items-center space-x-2">
                   <button className="p-2 hover:bg-corporate-50 rounded-lg transition-colors">
                     <Eye className="h-4 w-4 text-corporate-600" />
@@ -225,8 +227,8 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
             
-            <div className="p-6 space-y-6">
-              {districtProgress.map((district, index) => (
+            <div className="p-6 space-y-4">
+              {districtProgress.slice(0, 4).map((district, index) => (
                 <div key={index} className="bg-corporate-50 rounded-xl p-4 hover:bg-corporate-100 transition-colors">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center space-x-3">
@@ -249,8 +251,22 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
 
+          {/* Regional Activity Map */}
+          <div className="lg:col-span-2">
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-corporate-900 mb-2">Regional Survey Activity</h3>
+              <p className="text-corporate-600">Real-time visualization of survey operations across India</p>
+            </div>
+            <MapComponent 
+              data={sampleMapData} 
+              height="500px" 
+              showConnections={true}
+              interactive={true}
+            />
+          </div>
+
           {/* Quick Actions */}
-          <div className="bg-white rounded-2xl shadow-card border border-corporate-200">
+          <div className="bg-white rounded-2xl shadow-card border border-corporate-200 h-fit">
             <div className="p-6 border-b border-corporate-200">
               <h3 className="text-xl font-semibold text-corporate-900 flex items-center">
                 <Zap className="h-5 w-5 mr-2 text-warning" />
@@ -278,26 +294,6 @@ const Dashboard: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Regional Map */}
-          <div className="bg-white rounded-2xl shadow-card border border-corporate-200">
-            <div className="p-6 border-b border-corporate-200">
-              <h3 className="text-xl font-semibold text-corporate-900 flex items-center">
-                <Globe className="h-5 w-5 mr-2 text-accent" />
-                Regional Activity Map
-              </h3>
-            </div>
-            
-            <div className="p-6">
-              <div className="bg-corporate-50 rounded-xl h-64 flex items-center justify-center border-2 border-dashed border-corporate-300">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-corporate-400 mx-auto mb-3" />
-                  <p className="text-corporate-700 font-medium">Interactive Map</p>
-                  <p className="text-sm text-corporate-500 mt-1">Real-time survey activity across India</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* System Alerts */}
           <div className="bg-white rounded-2xl shadow-card border border-corporate-200">
             <div className="p-6 border-b border-corporate-200">
@@ -372,6 +368,38 @@ const Dashboard: React.FC = () => {
                   <div className="text-sm text-corporate-600">Security Score</div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* District Performance Summary */}
+          <div className="bg-white rounded-2xl shadow-card border border-corporate-200">
+            <div className="p-6 border-b border-corporate-200">
+              <h3 className="text-xl font-semibold text-corporate-900 flex items-center">
+                <Globe className="h-5 w-5 mr-2 text-accent" />
+                District Performance Summary
+              </h3>
+            </div>
+            
+            <div className="p-6 space-y-4">
+              {sampleMapData.districts.slice(0, 5).map((district, index) => (
+                <div key={district.id} className="flex items-center justify-between p-3 bg-corporate-50 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-3 h-3 rounded-full ${
+                      district.status === 'excellent' ? 'bg-emerald-500' :
+                      district.status === 'good' ? 'bg-blue-500' :
+                      district.status === 'warning' ? 'bg-amber-500' : 'bg-red-500'
+                    }`}></div>
+                    <div>
+                      <div className="font-medium text-corporate-900">{district.name}</div>
+                      <div className="text-sm text-corporate-600">{district.state}</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-semibold text-corporate-900">{district.accuracy}%</div>
+                    <div className="text-sm text-corporate-600">{district.surveys.active} active</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

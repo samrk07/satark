@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useLanguage } from '../contexts/LanguageContext';
+import MapComponent from './MapComponent';
+import { sampleMapData } from '../data/mapData';
 import { 
   MapPin, 
   FileText, 
@@ -296,7 +298,7 @@ const AgentDashboard: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Assigned Surveys */}
-          <div className="lg:col-span-2">
+          <div>
             <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700">
               <div className="p-8 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center justify-between">
@@ -317,29 +319,23 @@ const AgentDashboard: React.FC = () => {
                 {assignedSurveys.map((survey) => (
                   <div 
                     key={survey.id} 
-                    className="group bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 border border-gray-200 dark:border-gray-600"
+                    className="group bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-4 hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 border border-gray-200 dark:border-gray-600"
                     onClick={() => setSelectedSurvey(survey.id)}
                   >
-                    <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <h4 className="font-bold text-xl text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
+                        <h4 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-2">
                           {language === 'en' ? survey.title : survey.titleHi}
                         </h4>
-                        <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-400 mb-3">
+                        <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-400 mb-2">
                           <MapPin className="h-4 w-4" />
                           <span className="font-medium">{language === 'en' ? survey.location : survey.locationHi}</span>
                         </div>
-                        <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div className="grid grid-cols-1 gap-2 text-sm">
                           <div className="flex items-center space-x-2">
                             <Calendar className="h-4 w-4 text-gray-400" />
                             <span className="text-gray-600 dark:text-gray-400 font-medium">
                             {language === 'en' ? 'Deadline:' : 'समय सीमा:'} {survey.deadline}
-                          </span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <MessageSquare className="h-4 w-4 text-gray-400" />
-                            <span className="text-gray-600 dark:text-gray-400 font-medium">
-                            {survey.completedResponses}/{survey.totalResponses} {language === 'en' ? 'responses' : 'प्रतिक्रियाएं'}
                           </span>
                           </div>
                         </div>
@@ -351,14 +347,14 @@ const AgentDashboard: React.FC = () => {
                     
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-600 dark:text-gray-400">
+                        <span className="text-sm text-gray-600 dark:text-gray-400">
                           {language === 'en' ? 'Progress' : 'प्रगति'}
                         </span>
-                        <span className="font-bold text-lg text-gray-900 dark:text-white">{survey.completion}%</span>
+                        <span className="font-bold text-gray-900 dark:text-white">{survey.progress}%</span>
                       </div>
-                      <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-4 overflow-hidden">
+                      <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-3 overflow-hidden">
                         <div 
-                          className="bg-gradient-to-r from-blue-500 to-green-500 h-4 rounded-full transition-all duration-500 shadow-inner" 
+                          className="bg-gradient-to-r from-blue-500 to-green-500 h-3 rounded-full transition-all duration-500 shadow-inner" 
                           style={{ width: `${survey.progress}%` }}
                         ></div>
                       </div>
@@ -369,10 +365,32 @@ const AgentDashboard: React.FC = () => {
             </div>
           </div>
 
+          {/* Regional Activity Map */}
+          <div className="lg:col-span-2">
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                {language === 'en' ? 'Regional Survey Activity' : 'क्षेत्रीय सर्वेक्षण गतिविधि'}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                {language === 'en' 
+                  ? 'Live view of survey operations and agent deployment across your region' 
+                  : 'आपके क्षेत्र में सर्वेक्षण संचालन और एजेंट तैनाती का लाइव दृश्य'
+                }
+              </p>
+            </div>
+            <MapComponent 
+              data={sampleMapData} 
+              height="600px" 
+              showConnections={true}
+              interactive={true}
+            />
+          </div>
+
           {/* Quick Actions & Tools */}
-          <div className="space-y-6">
+          <div className="space-y-6 lg:col-span-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Quick Actions */}
-            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-6">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                 <Zap className="mr-3 h-6 w-6 text-yellow-500" />
                 {language === 'en' ? 'Quick Actions' : 'त्वरित कार्य'}
@@ -418,7 +436,7 @@ const AgentDashboard: React.FC = () => {
             </div>
 
             {/* Sync Status */}
-            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-6">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                 <RefreshCw className="mr-3 h-6 w-6 text-blue-500" />
                 {language === 'en' ? 'Data Sync Status' : 'डेटा सिंक स्थिति'}
@@ -462,7 +480,7 @@ const AgentDashboard: React.FC = () => {
             </div>
 
             {/* Recent Activity */}
-            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-6">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                 <Activity className="mr-3 h-6 w-6 text-green-500" />
                 {language === 'en' ? 'Recent Activity' : 'हाल की गतिविधि'}
@@ -495,7 +513,7 @@ const AgentDashboard: React.FC = () => {
             </div>
 
             {/* Performance Badge */}
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-3xl shadow-2xl border-2 border-yellow-200 dark:border-yellow-700 p-8 text-center">
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-3xl shadow-2xl border-2 border-yellow-200 dark:border-yellow-700 p-6 text-center">
               <div className="bg-gradient-to-r from-yellow-400 to-orange-400 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Award className="h-10 w-10 text-white" />
               </div>
@@ -522,9 +540,10 @@ const AgentDashboard: React.FC = () => {
                 {language === 'en' ? 'View Leaderboard' : 'लीडरबोर्ड देखें'}
               </button>
             </div>
+            </div>
 
             {/* System Alert */}
-            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 p-6 lg:col-span-3">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
                 <Shield className="mr-3 h-6 w-6 text-red-500" />
                 {language === 'en' ? 'System Alert' : 'सिस्टम अलर्ट'}
@@ -547,7 +566,6 @@ const AgentDashboard: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
